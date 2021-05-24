@@ -1,4 +1,4 @@
-package com.mooc.meetingfilm.backendcommon;
+package com.mooc.meetingfilm.backend.common;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
