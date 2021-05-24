@@ -1,5 +1,8 @@
 package com.mooc.meetingfilm.backend.common.backend.user;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mooc.meetingfilm.backend.common.BackendCommonApplicationTests;
 import com.mooc.meetingfilm.backend.common.dao.entity.MoocBackendUserT;
 import com.mooc.meetingfilm.backend.common.dao.mapper.MoocBackendUserTMapper;
@@ -22,10 +25,16 @@ public class UserTest extends BackendCommonApplicationTests {
     @Test
     public void add() {
         MoocBackendUserT user = new MoocBackendUserT();
-        user.setUserName("admin");
-        user.setUserPwd("admin");
-        user.setUserPhone("12312312312");
-        backendUserTMapper.insert(user);
+        for (int i = 0; i < 5; i++) {
+            user.setUserName("admin"+i);
+            user.setUserPwd("admin"+i);
+            user.setUserPhone("1520000111"+i);
+
+            backendUserTMapper.insert(user);
+        }
+
+
+
     }
 
     @Test
@@ -46,15 +55,42 @@ public class UserTest extends BackendCommonApplicationTests {
 
     @Test
     public void select() {
-        MoocBackendUserT moocBackendUserT = backendUserTMapper.selectById(2);
-        System.out.println(moocBackendUserT);
+        // MoocBackendUserT moocBackendUserT = backendUserTMapper.selectById(2);
+        // System.out.println(moocBackendUserT);
+        //
+        // System.out.println("===========================");
+        // //查询列表
+        // List<MoocBackendUserT> moocBackendUserTS = backendUserTMapper.selectList(null);
+        // //java8 流式API
+        // moocBackendUserTS.stream().forEach(
+        //         System.out::println
+        // );
 
         System.out.println("===========================");
-        //查询列表
-        List<MoocBackendUserT> moocBackendUserTS = backendUserTMapper.selectList(null);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        //注意这里的user_name不是属性名,是数据库字段,这是mp作为一个orm框架不完善的地方
+        queryWrapper.eq("user_name","admin4");
+        List<MoocBackendUserT> moocBackendUserTS1 = backendUserTMapper.selectList(queryWrapper);
         //java8 流式API
-        moocBackendUserTS.stream().forEach(
+        moocBackendUserTS1.stream().forEach(
                 System.out::println
         );
     }
+
+    @Test
+    public void selectPage() {
+        //当前页数1,十条
+        Page<MoocBackendUserT> objectPage = new Page<>(1,10);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        //注意这里的user_name不是属性名,是数据库字段,这是mp作为一个orm框架不完善的地方
+        queryWrapper.like("user_name","admin");
+        // List<MoocBackendUserT> moocBackendUserTS1 = backendUserTMapper.selectList(queryWrapper);
+        IPage<MoocBackendUserT> moocBackendUserTIPage = backendUserTMapper.selectPage(objectPage, queryWrapper);
+        //java8 流式API
+        moocBackendUserTIPage.getRecords().stream().forEach(
+                System.out::println
+        );
+    }
+
+
 }
