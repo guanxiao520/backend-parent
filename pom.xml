@@ -21,6 +21,13 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.3-SNAPSHOT</spring-cloud.version>
+        <java.version>1.8</java.version>
+        <mybatis.plus.version>3.2.0</mybatis.plus.version>
+        <druid.version>1.1.10</druid.version>
+        <mysql.version>8.0.13</mysql.version>
+        <!--mybatis_plus生成代码的一个模板框架-->
+        <beetl.version>2.9.10</beetl.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
     <dependencies>
         <dependency>
@@ -49,6 +56,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+
+    <!--依赖管理器这里声明了并不代表继承后的子模块会引入这些jar包,只是这里统一做了包的管理,子模块不需要进行包管理了-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -58,7 +68,52 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+
+            <!-- mybatis-plus依赖 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <!-- Druid引入 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- 数据源驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- 代码生成器依赖 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ibeetl</groupId>
+                <artifactId>beetl</artifactId>
+                <version>${beetl.version}</version>
+            </dependency>
+
+            <!-- 日志框架依赖 -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+
         </dependencies>
+
     </dependencyManagement>
 
     <!--<build>-->
