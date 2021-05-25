@@ -2,6 +2,7 @@ package com.mooc.meetingfilm.user.controller;
 
 import com.mooc.backendutils.common.vo.BaseResponseVO;
 import com.mooc.backendutils.exception.CommonServiceException;
+import com.mooc.backendutils.util.JwtTokenUtil;
 import com.mooc.meetingfilm.user.controller.vo.LoginReqVO;
 import com.mooc.meetingfilm.user.service.UserServiceAPI;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,9 +37,13 @@ public class UserController {
         //验证用户名密码是否正确
         String userId = userServiceAPI.checkUserLogin(reqVO.getUsername(), reqVO.getPassword());
 
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        String randomKey = jwtTokenUtil.getRandomKey();
+        String token = jwtTokenUtil.generateToken(userId, randomKey);
+
         Map<String, String> result = new HashMap<>();
-        result.put("randomKey", "");
-        result.put("token", "");
+        result.put("randomKey", randomKey);
+        result.put("token", token);
 
         return BaseResponseVO.success(result);
     }
