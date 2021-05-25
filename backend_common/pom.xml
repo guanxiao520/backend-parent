@@ -56,7 +56,7 @@
 
 
         <dependency>
-            <groupId>com.mooc</groupId>
+            <groupId>com.mooc.meetingfilm</groupId>
             <artifactId>backend-utils</artifactId>
         </dependency>
 
@@ -66,19 +66,20 @@
     <!-- 资源引入 -->
     <!--这里引入这个是因为有些xml我想写在java目录里,一般默认不进行识别,
     所以可以配置将java目录下的所有xml文件打包之后映射到resources文件夹里-->
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <filtering>true</filtering>
-        </resource>
-        <resource>
-            <directory>src/main/java</directory>
-            <includes>
-                <include>**/*.xml</include>
-            </includes>
-        </resource>
-    </resources>
-
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
     <!--  common模块不需要这种打包的方式-->
     <!--  <build>

@@ -11,12 +11,14 @@
     <groupId>com.mooc.meetingfilm</groupId>
     <artifactId>backend-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>backend-parent</name>
     <description>学习慕课后端运维系统</description>
 
     <modules>
         <module>backend_common</module>
         <module>backend_utils</module>
+        <module>backend_user</module>
     </modules>
 
     <properties>
@@ -114,7 +116,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.mooc</groupId>
+                <groupId>com.mooc.meetingfilm</groupId>
                 <artifactId>backend-utils</artifactId>
                 <!--引入maven公共变量,避免每次都会修改-->
                 <version>${project.version}</version>
