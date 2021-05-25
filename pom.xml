@@ -16,6 +16,7 @@
 
     <modules>
         <module>backend_common</module>
+        <module>backend_utils</module>
     </modules>
 
     <properties>
@@ -55,6 +56,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 
@@ -111,6 +113,17 @@
                 <version>${log4j.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.mooc</groupId>
+                <artifactId>backend-utils</artifactId>
+                <!--引入maven公共变量,避免每次都会修改-->
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mooc.meetingfilm</groupId>
+                <artifactId>backend-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
         </dependencies>
 

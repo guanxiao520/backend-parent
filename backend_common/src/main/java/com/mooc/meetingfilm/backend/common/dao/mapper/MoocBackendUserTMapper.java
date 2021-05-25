@@ -12,5 +12,4 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-05-25
  */
 public interface MoocBackendUserTMapper extends BaseMapper<MoocBackendUserT> {
-
 }
