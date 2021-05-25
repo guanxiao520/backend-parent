@@ -16,14 +16,16 @@ import lombok.Data;
 @Data
 public class LoginReqVO extends BaseRequestVO {
 
-    private String userName;
+    private String username;
     private String password;
 
     @Override
     public void checkParam() throws CommonServiceException {
         //TODO 验证数据合法性
-        if (ToolUtils.strIsNull(userName) || ToolUtils.strIsNull(password)) {
+        if (ToolUtils.strIsNull(username) || ToolUtils.strIsNull(password)) {
             throw new CommonServiceException(404, "username or password is null");
+        }else{
+
         }
     }
 }
