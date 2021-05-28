@@ -7,7 +7,7 @@ import com.mooc.backendutils.util.MD5Util;
 import com.mooc.meetingfilm.user.BackendUserApplicationTests;
 import com.mooc.meetingfilm.user.dao.entity.MoocBackendUserT;
 import com.mooc.meetingfilm.user.dao.mapper.MoocBackendUserTMapper;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import javax.annotation.Resource;
 import java.util.List;
