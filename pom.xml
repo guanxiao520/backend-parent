@@ -16,9 +16,11 @@
     <description>学习慕课后端运维系统</description>
 
     <modules>
+        <module>backend_user</module>
+        <module>backend-film</module>
+
         <module>backend_common</module>
         <module>backend_utils</module>
-        <module>backend_user</module>
         <module>backend_eureka_server</module>
         <module>backend_show</module>
     </modules>
